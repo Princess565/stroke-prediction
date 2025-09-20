@@ -2,11 +2,15 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import joblib
-
+import os
 # -----------------
 # Load model & scaler
 # -----------------
-model = joblib.load('stroke_model.pkl')
+# build the absolute path to the model file
+BASE_DIR = os.path.dirname(__file__)
+model_path = os.path.join(BASE_DIR, 'stroke_model.pkl')
+# load the model
+model = joblib.load(model_path)
 scaler = joblib.load('scaler.pkl')
 
 st.title("🧠 Stroke Prediction App")
